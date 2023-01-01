@@ -1,0 +1,14 @@
+{
+  "extends": "@eo-cli-pro/ts-config/docs.json",
+  "compilerOptions": {
+    "composite": true
+  },
+  "include": [
+    "apps/docs",
+    "apps/docs/.vitepress",
+    "packages/*/src/**/*",
+    "packages/*/package.json",
+    "packages/*/typings/**/*",
+    "typings/env.d.ts"
+  ]
+}

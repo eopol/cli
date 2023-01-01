@@ -1,0 +1,55 @@
+{
+  "name": "@eo-cli-pro/playground",
+  "version": "0.0.0",
+  "private": true,
+  "description": "🚀 The package offer vue3 playground for @eo-cli-pro!",
+  "keywords": [
+    "google translate select",
+    "google translate",
+    "google",
+    "translate",
+    "Vue3",
+    "Vue",
+    "vue google translate",
+    "vue google translate select",
+    "monorepo",
+    "pnpm",
+    "turborepo",
+    "changesets",
+    "vite",
+    "playground"
+  ],
+  "homepage": "https://github.com/eopol/eo-cli-pro/blob/master/apps/playground#readme",
+  "bugs": {
+    "url": "https://github.com/eopol/eo-cli-pro/issues"
+  },
+  "license": "MIT",
+  "author": "i7eo <admin@i7eo.com> (https://github.com/i7eo)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eopol/eo-cli-pro.git",
+    "directory": "apps/playground/vue3"
+  },
+  "scripts": {
+    "lint": "run-s lint:**",
+    "lint:eslint": "TIMING=1 eslint \"*.{js,jsx,ts,tsx,md,json}\" --fix",
+    "lint:prettier": "prettier --write \"*.{js,ts,jsx,tsx,md,json}\"",
+    "clean": "run-p clean:**",
+    "clean:cache": "rimraf .turbo && rimraf dist",
+    "clean:deps": "rimraf node_modules",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.2.41"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "typescript": "^4.8.4",
+    "vite": "^4.0.1"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
