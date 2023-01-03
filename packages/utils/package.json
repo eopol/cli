@@ -1,16 +1,17 @@
 {
-  "name": "@eo-cli-pro/cli",
+  "name": "@eo-cli-pro/utils",
   "version": "0.0.0",
-  "description": "🚀 The package offer cli for @eo-cli-pro!",
+  "description": "🚀 The package offer utils for @eo-cli-pro!",
   "type": "module",
   "keywords": [
     "cli",
+    "utils",
     "monorepo",
     "pnpm",
     "turborepo",
     "changesets"
   ],
-  "homepage": "https://github.com/eopol/eo-cli-pro/blob/master/packages/cli#readme",
+  "homepage": "https://github.com/eopol/eo-cli-pro/blob/master/packages/utils#readme",
   "bugs": {
     "url": "https://github.com/eopol/eo-cli-pro/issues"
   },
@@ -27,15 +28,12 @@
     },
     "./*": "./*"
   },
-  "bin": {
-    "eo-cli-pro": "./bin/index.js"
-  },
   "types": "./dist/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/eopol/eo-cli-pro.git",
-    "directory": "packages/cli"
+    "directory": "packages/utils"
   },
   "scripts": {
     "build": "rimraf dist && tsup --config ./build.config.ts",
@@ -47,20 +45,8 @@
     "clean:deps": "rimraf node_modules"
   },
   "dependencies": {
-    "@eo-cli-pro/utils": "workspace:*",
-    "@types/import-local": "^3.1.0",
-    "@types/minimist": "1.2.2",
-    "@types/root-check": "1.0.0",
-    "@types/semver": "7.3.13",
-    "@types/user-home": "2.0.0",
-    "chalk": "^5.2.0",
-    "consola": "^2.15.3",
-    "dayjs": "^1.11.7",
-    "dotenv": "16.0.3",
-    "import-local": "^3.1.0",
-    "minimist": "1.2.7",
-    "root-check": "2.0.0",
-    "semver": "^7.3.8"
+    "@eo-cli-pro/constants": "workspace:*",
+    "consola": "^2.15.3"
   },
   "devDependencies": {
     "tsup": "^6.4.0",

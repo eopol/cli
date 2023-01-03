@@ -26,8 +26,10 @@
     "postinstall": "simple-git-hooks",
     "dev": "turbo run dev --parallel --continue",
     "dev:docs": "pnpm run build:docs && turbo run dev --filter=docs",
+    "dev:cli": "pnpm run build:cli && npx eo-cli-pro",
     "build": "turbo run build",
     "build:docs": "turbo run build --filter=docs",
+    "build:cli": "turbo run build --filter=cli",
     "test": "turbo run test",
     "clean": "run-s clean:**",
     "clean:workspace": "turbo run clean",
@@ -77,6 +79,6 @@
     "vitest": "^0.26.2"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   }
 }

@@ -44,6 +44,6 @@
     "lint-staged": "^13.0.3"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   }
 }
