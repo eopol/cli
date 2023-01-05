@@ -1,6 +1,4 @@
 import importLocal from 'import-local'
-import chalk from 'chalk'
-import consola from 'consola'
 import core from './lib'
 
 if (importLocal(import.meta.url)) {

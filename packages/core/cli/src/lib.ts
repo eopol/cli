@@ -1,6 +1,4 @@
 import { join, resolve } from 'node:path'
-import chalk from 'chalk'
-// import consola from 'consola'
 import rootCheck from 'root-check'
 import minimist from 'minimist'
 import dotenv from 'dotenv'
@@ -141,7 +139,7 @@ function checkDebugArg(args: minimist.ParsedArgs) {
  */
 function checkUserHome() {
   if (!userHome || !pathExistsSync(userHome)) {
-    throw new Error(chalk.red.bold('本地用户主目录不存在！'))
+    throw new Error('本地用户主目录不存在！')
   }
 }
 
