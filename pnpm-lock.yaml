@@ -25,17 +25,17 @@ importers:
       '@types/node': '*'
       '@types/prettier': ^2.7.2
       '@types/semver': 7.3.13
-      '@vitest/ui': ^0.26.2
+      '@vitest/ui': ^0.26.3
       inquirer: ^9.1.4
-      jsdom: ^20.0.2
+      jsdom: ^20.0.3
       npm-run-all: ^4.1.5
       octokit: ^2.0.10
       rimraf: ^3.0.2
       semver: ^7.3.8
-      tsx: ^3.11.0
+      tsx: ^3.12.1
       turbo: ^1.6.3
-      typescript: ^4.8.4
-      vitest: ^0.26.2
+      typescript: ^4.9.4
+      vitest: ^0.26.3
     devDependencies:
       '@changesets/assemble-release-plan': 5.2.3
       '@changesets/changelog-github': 0.4.8
@@ -73,9 +73,9 @@ importers:
   apps/playground:
     specifiers:
       '@vitejs/plugin-vue': ^4.0.0
-      typescript: ^4.8.4
-      vite: ^4.0.1
-      vue: ^3.2.41
+      typescript: ^4.9.4
+      vite: ^4.0.4
+      vue: ^3.2.45
     dependencies:
       vue: 3.2.45
     devDependencies:
@@ -85,31 +85,31 @@ importers:
 
   internals/commitlint-config:
     specifiers:
-      '@commitlint/cli': 17.2.0
-      '@commitlint/config-conventional': 17.2.0
+      '@commitlint/cli': 17.4.0
+      '@commitlint/config-conventional': 17.4.0
       '@types/node': '*'
-      czg: ^1.3.12
+      czg: ^1.4.1
     dependencies:
-      '@commitlint/cli': 17.2.0_@types+node@18.11.18
-      '@commitlint/config-conventional': 17.2.0
+      '@commitlint/cli': 17.4.0_@types+node@18.11.18
+      '@commitlint/config-conventional': 17.4.0
       '@types/node': 18.11.18
       czg: 1.4.1
 
   internals/eslint-config:
     specifiers:
-      '@typescript-eslint/eslint-plugin': ^5.42.0
-      '@typescript-eslint/parser': ^5.42.0
-      eslint: ^8.25.0
-      eslint-config-prettier: ^8.5.0
+      '@typescript-eslint/eslint-plugin': ^5.48.0
+      '@typescript-eslint/parser': ^5.48.0
+      eslint: ^8.31.0
+      eslint-config-prettier: ^8.6.0
       eslint-plugin-eslint-comments: ^3.2.0
       eslint-plugin-import: ^2.26.0
-      eslint-plugin-jsonc: ^2.5.0
+      eslint-plugin-jsonc: ^2.6.0
       eslint-plugin-markdown: ^3.0.0
       eslint-plugin-prettier: ^4.2.1
-      eslint-plugin-vue: ^9.7.0
+      eslint-plugin-vue: ^9.8.0
       jsonc-eslint-parser: ^2.1.0
-      prettier: ^2.7.1
-      typescript: ^4.8.4
+      prettier: ^2.8.1
+      typescript: ^4.9.4
       yaml-eslint-parser: ^1.1.0
     dependencies:
       '@typescript-eslint/eslint-plugin': 5.48.0_k73wpmdolxikpyqun3p36akaaq
@@ -130,13 +130,13 @@ importers:
 
   internals/lint-staged-config:
     specifiers:
-      lint-staged: ^13.0.3
+      lint-staged: ^13.1.0
     dependencies:
       lint-staged: 13.1.0
 
   internals/prettier-config:
     specifiers:
-      prettier: ^2.7.1
+      prettier: ^2.8.1
     dependencies:
       prettier: 2.8.1
 
@@ -148,11 +148,11 @@ importers:
 
   internals/stylelint-config:
     specifiers:
-      postcss: ^8.4.18
+      postcss: ^8.4.20
       postcss-html: ^1.5.0
-      postcss-scss: 4.0.5
-      stylelint: ^14.14.1
-      stylelint-config-prettier: ^9.0.3
+      postcss-scss: 4.0.6
+      stylelint: ^14.16.1
+      stylelint-config-prettier: ^9.0.4
       stylelint-config-recommended: ^9.0.0
       stylelint-config-recommended-scss: 8.0.0
       stylelint-config-recommended-vue: ^1.4.0
@@ -162,7 +162,7 @@ importers:
     dependencies:
       postcss: 8.4.20
       postcss-html: 1.5.0
-      postcss-scss: 4.0.5_postcss@8.4.20
+      postcss-scss: 4.0.6_postcss@8.4.20
       stylelint-config-prettier: 9.0.4_stylelint@14.16.1
       stylelint-config-recommended: 9.0.0_stylelint@14.16.1
       stylelint-config-recommended-scss: 8.0.0_vitr26fcqo6sphdfxyxll4n2gy
@@ -178,8 +178,8 @@ importers:
 
   packages/constants:
     specifiers:
-      tsup: ^6.4.0
-      typescript: ^4.8.4
+      tsup: ^6.5.0
+      typescript: ^4.9.4
     devDependencies:
       tsup: 6.5.0_typescript@4.9.4
       typescript: 4.9.4
@@ -196,8 +196,8 @@ importers:
       import-local: ^3.1.0
       minimist: 1.2.7
       root-check: 2.0.0
-      tsup: ^6.4.0
-      typescript: ^4.8.4
+      tsup: ^6.5.0
+      typescript: ^4.9.4
     dependencies:
       '@eo-cli-pro/utils': link:../../utils
       '@types/import-local': 3.1.0
@@ -220,8 +220,8 @@ importers:
       chalk: ^5.2.0
       consola: ^2.15.3
       semver: ^7.3.8
-      tsup: ^6.4.0
-      typescript: ^4.8.4
+      tsup: ^6.5.0
+      typescript: ^4.9.4
     dependencies:
       '@eo-cli-pro/constants': link:../constants
       '@types/semver': 7.3.13
@@ -481,8 +481,8 @@ packages:
       prettier: 2.8.1
     dev: true
 
-  /@commitlint/cli/17.2.0_@types+node@18.11.18:
-    resolution: {integrity: sha512-kd1zykcrjIKyDRftWW1E1TJqkgzeosEkv1BiYPCdzkb/g/3BrfgwZUHR1vg+HO3qKUb/0dN+jNXArhGGAHpmaQ==}
+  /@commitlint/cli/17.4.0_@types+node@18.11.18:
+    resolution: {integrity: sha512-SEY4sYe8yVlgxPP7X0wJb96DBAGBPsCsy6QbqJt/UECbIAjDeDV5xXBV4jnS7T/qMC10sk6Ub9kDhEX0VWvblw==}
     engines: {node: '>=v14'}
     hasBin: true
     dependencies:
@@ -492,7 +492,7 @@ packages:
       '@commitlint/read': 17.4.0
       '@commitlint/types': 17.4.0
       execa: 5.1.1
-      lodash: 4.17.21
+      lodash.isfunction: 3.0.9
       resolve-from: 5.0.0
       resolve-global: 1.0.0
       yargs: 17.6.2
@@ -502,8 +502,8 @@ packages:
       - '@types/node'
     dev: false
 
-  /@commitlint/config-conventional/17.2.0:
-    resolution: {integrity: sha512-g5hQqRa80f++SYS233dbDSg16YdyounMTAhVcmqtInNeY/GF3aA4st9SVtJxpeGrGmueMrU4L+BBb+6Vs5wrcg==}
+  /@commitlint/config-conventional/17.4.0:
+    resolution: {integrity: sha512-G4XBf45J4ZMspO4NwBFzY3g/1Kb+B42BcIxeikF8wucQxcyxcmhRdjeQpRpS1XEcBq5pdtEEQFipuB9IuiNFhw==}
     engines: {node: '>=v14'}
     dependencies:
       conventional-changelog-conventionalcommits: 5.0.0
@@ -4104,6 +4104,10 @@ packages:
     resolution: {integrity: sha512-Bz5mupy2SVbPHURB98VAcw+aHh4vRV5IPNhILUCsOzRmsTmSQ17jIuqopAentWoehktxGd9e/hbIXq980/1QJg==}
     dev: true
 
+  /lodash.isfunction/3.0.9:
+    resolution: {integrity: sha512-AirXNj15uRIMMPihnkInB4i3NHeb4iBtNg9WRWuK2o31S+ePwwNmDPaTL3o7dTJ+VXNZim7rFs4rxN4YU1oUJw==}
+    dev: false
+
   /lodash.isinteger/4.0.4:
     resolution: {integrity: sha512-DBwtEWN2caHQ9/imiNeEA5ys1JoRtRfY3d7V9wkqtbycnAmTvRRmbHKDV4a0EYc678/dia0jrte4tjYwVBaZUA==}
     dev: true
@@ -4816,11 +4820,11 @@ packages:
     dependencies:
       postcss: 8.4.20
 
-  /postcss-scss/4.0.5_postcss@8.4.20:
-    resolution: {integrity: sha512-F7xpB6TrXyqUh3GKdyB4Gkp3QL3DDW1+uI+gxx/oJnUt/qXI4trj5OGlp9rOKdoABGULuqtqeG+3HEVQk4DjmA==}
+  /postcss-scss/4.0.6_postcss@8.4.20:
+    resolution: {integrity: sha512-rLDPhJY4z/i4nVFZ27j9GqLxj1pwxE80eAzUNRMXtcpipFYIeowerzBgG3yJhMtObGEXidtIgbUpQ3eLDsf5OQ==}
     engines: {node: '>=12.0'}
     peerDependencies:
-      postcss: ^8.3.3
+      postcss: ^8.4.19
     dependencies:
       postcss: 8.4.20
     dev: false
@@ -5411,7 +5415,7 @@ packages:
         optional: true
     dependencies:
       postcss: 8.4.20
-      postcss-scss: 4.0.5_postcss@8.4.20
+      postcss-scss: 4.0.6_postcss@8.4.20
       stylelint: 14.16.1
       stylelint-config-recommended: 9.0.0_stylelint@14.16.1
       stylelint-scss: 4.3.0_stylelint@14.16.1
