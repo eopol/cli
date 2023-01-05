@@ -1,16 +1,16 @@
 import { join, resolve } from 'node:path'
 import chalk from 'chalk'
 // import consola from 'consola'
-import semver from 'semver'
 import rootCheck from 'root-check'
 import minimist from 'minimist'
 import dotenv from 'dotenv'
 import {
-  getNpmInfoVersions,
+  getLatestVersion,
   logCreator,
   logOptionSetter,
   pathExistsSync,
   userHome,
+  versionGreaterThanOrEqual,
 } from '@eo-cli-pro/utils'
 import {
   DEFAULT_ENV_CLI_HOME,
@@ -28,10 +28,13 @@ import pkg from '../package.json'
 // const readme = require('../README.md')
 
 /* 日志实例 */
-const log = logCreator('cli')
+const log = logCreator({
+  pkgName: 'cli',
+})
+/* 脚手架包名 */
+const cliName = pkg.name
 
 async function core(args: string[]) {
-  // log.info(chalk.green('core exec'))
   try {
     checkPkgVersion()
     checkNodeVersion()
@@ -46,26 +49,29 @@ async function core(args: string[]) {
 }
 
 /**
- * @description
- * 如果用户本地使用的是老版本脚手架，这里要进行提示说发现新版本
+ * @description 如果用户本地使用的是老版本脚手架，这里要进行提示说发现新版本
  * 1. 获取当前版本号和包名
  * 2. 调用 npm api，获取该包下包含所有版本号的列表
- * 3. 提取全部版本号并进行比对
- * 4. 获取最新版本号提示用户更新
+ * 3. 将本地安装的版本与 npm 返回的全部版本对比返回大于当前版本的版本数组
+ * 4. 获取最新版本号（降序后的第一个）提示用户更新
  */
 async function checkCliVersion() {
   const currentVersion = pkg.version
+
+  // TODO: 替换为真实的包名
   // const currentName = pkg.name
   const currentName = '@google-translate-select/vue3'
-  const versions = await getNpmInfoVersions(currentName)
-  if (versions) {
-    console.log(versions)
+
+  const latestVersion = await getLatestVersion(currentVersion, currentName)
+  if (latestVersion) {
+    log.warn(
+      `${cliName} 本地版本：${currentVersion}，最新版本：${latestVersion}，请手动更新！`
+    )
   }
 }
 
 /**
- * @description
- * 将敏感信息保存在环境变量中而不是写死在代码里
+ * @description 将敏感信息保存在环境变量中而不是写死在代码里
  * 1. 从 .env 文件中读取配置并加载进入环境变量
  */
 function checkEnv() {
@@ -77,7 +83,7 @@ function checkEnv() {
   }
 
   createDefaultEnv()
-  log.debug(chalk.blue.bold(`本机脚手架缓存地址：${process.env.CLI_HOME}`))
+  log.debug(`${cliName} 本地缓存地址：${process.env.CLI_HOME}`)
 }
 
 /**
@@ -112,8 +118,7 @@ function checkInputArgs() {
 }
 
 /**
- * @description
- * 满足 --debug 模式，开启 debug 模式后，日志会全部展示
+ * @description 满足 --debug 模式，开启 debug 模式后，日志会全部展示
  * 1. 根据传入的参数来确定 log 的级别
  * @param args minimist 解析后的参数
  */
@@ -130,20 +135,18 @@ function checkDebugArg(args: minimist.ParsedArgs) {
 }
 
 /**
- * @description
- * 记录用户主目录，方便文件/缓存操作。mac 下为：/Users/i7eo
+ * @description 记录用户主目录，方便文件/缓存操作。mac 下为：/Users/i7eo
  * - 跨操作系统获取用户主目录
  * - 删除 user-home 依赖，使用详情见：https://github.com/sindresorhus/user-home#readme
  */
 function checkUserHome() {
   if (!userHome || !pathExistsSync(userHome)) {
-    throw new Error(chalk.red.bold(`当前用户主目录不存在！`))
+    throw new Error(chalk.red.bold('本地用户主目录不存在！'))
   }
 }
 
 /**
- * @description
- * 检查 root 权限，避免普通用户修改不了 root 用户创建的文件
+ * @description 检查 root 权限，避免普通用户修改不了 root 用户创建的文件
  * 1. 使用 root-check 将 root 用户降级为普通用户
  * 2. 使用 process.geteuid() 来判断是普通（501）/root（0）用户
  */
@@ -152,18 +155,19 @@ function checkRoot() {
 }
 
 /**
- * @description
- * 检查 node 版本号，避免某些方法不兼容不同的版本
+ * @description 检查 node 版本号，避免某些方法不兼容不同的版本
  * 1. 获取当前 node 版本号
  * 2. 对比最低版本号
  */
 function checkNodeVersion() {
   const currentVersion = process.version
+  const isVersionGreaterThanOrEqual = versionGreaterThanOrEqual(
+    currentVersion,
+    lowestVersion
+  )
 
-  if (!semver.gte(currentVersion, lowestVersion)) {
-    throw new Error(
-      chalk.red.bold(`需要安装 v${lowestVersion} 以上版本的 Node.js`)
-    )
+  if (!isVersionGreaterThanOrEqual) {
+    throw new Error(`${cliName} 需要安装 v${lowestVersion} 以上版本的 Node.js`)
   }
 }
 
@@ -171,7 +175,7 @@ function checkNodeVersion() {
  * @description 输出当前脚手架版本号
  */
 function checkPkgVersion() {
-  log.info(chalk.green.bold(`Cli ${pkg.version}`))
+  log.info(`欢迎使用 ${cliName}，本地版本为：${pkg.version} 👋👋👋`)
 }
 
 export default core

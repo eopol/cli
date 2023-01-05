@@ -46,7 +46,10 @@
   },
   "dependencies": {
     "@eo-cli-pro/constants": "workspace:*",
-    "consola": "^2.15.3"
+    "@types/semver": "7.3.13",
+    "chalk": "^5.2.0",
+    "consola": "^2.15.3",
+    "semver": "^7.3.8"
   },
   "devDependencies": {
     "tsup": "^6.4.0",

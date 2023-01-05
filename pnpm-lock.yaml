@@ -222,12 +222,18 @@ importers:
   packages/utils:
     specifiers:
       '@eo-cli-pro/constants': workspace:*
+      '@types/semver': 7.3.13
+      chalk: ^5.2.0
       consola: ^2.15.3
+      semver: ^7.3.8
       tsup: ^6.4.0
       typescript: ^4.8.4
     dependencies:
       '@eo-cli-pro/constants': link:../constants
+      '@types/semver': 7.3.13
+      chalk: 5.2.0
       consola: 2.15.3
+      semver: 7.3.8
     devDependencies:
       tsup: 6.5.0_typescript@4.9.4
       typescript: 4.9.4
