@@ -3,9 +3,9 @@ import rootCheck from 'root-check'
 import minimist from 'minimist'
 import dotenv from 'dotenv'
 import {
-  getLatestVersion,
-  logCreator,
-  logOptionSetter,
+  getNpmLatestVersion,
+  logger,
+  loggerOptionSetter,
   pathExistsSync,
   userHome,
   versionGreaterThanOrEqual,
@@ -25,13 +25,6 @@ import pkg from '../package.json'
 // const pkg = require('../package.json')
 // const readme = require('../README.md')
 
-/* 日志实例 */
-const log = logCreator({
-  pkgName: 'cli',
-})
-/* 脚手架包名 */
-const cliName = pkg.name
-
 async function core(args: string[]) {
   try {
     checkPkgVersion()
@@ -42,7 +35,7 @@ async function core(args: string[]) {
     checkEnv()
     await checkCliVersion()
   } catch (error: any) {
-    log.error(error.message)
+    logger.error(error.message, pkg.name)
   }
 }
 
@@ -60,10 +53,11 @@ async function checkCliVersion() {
   // const currentName = pkg.name
   const currentName = '@google-translate-select/vue3'
 
-  const latestVersion = await getLatestVersion(currentVersion, currentName)
+  const latestVersion = await getNpmLatestVersion(currentVersion, currentName)
   if (latestVersion) {
-    log.warn(
-      `${cliName} 本地版本：${currentVersion}，最新版本：${latestVersion}，请手动更新！`
+    logger.warn(
+      `${pkg.name} 本地版本：${currentVersion}，最新版本：${latestVersion}，请手动更新！`,
+      pkg.name
     )
   }
 }
@@ -81,7 +75,7 @@ function checkEnv() {
   }
 
   createDefaultEnv()
-  log.debug(`${cliName} 本地缓存地址：${process.env.CLI_HOME}`)
+  logger.debug(`${pkg.name} 本地缓存地址：${process.env.CLI_HOME}`, pkg.name)
 }
 
 /**
@@ -127,7 +121,8 @@ function checkDebugArg(args: minimist.ParsedArgs) {
     process.env.LOG_LEVEL = 'Info'
   }
 
-  logOptionSetter({
+  loggerOptionSetter({
+    instance: logger,
     levelName: process.env.LOG_LEVEL,
   })
 }
@@ -165,7 +160,7 @@ function checkNodeVersion() {
   )
 
   if (!isVersionGreaterThanOrEqual) {
-    throw new Error(`${cliName} 需要安装 v${lowestVersion} 以上版本的 Node.js`)
+    throw new Error(`${pkg.name} 需要安装 v${lowestVersion} 以上版本的 Node.js`)
   }
 }
 
@@ -173,7 +168,10 @@ function checkNodeVersion() {
  * @description 输出当前脚手架版本号
  */
 function checkPkgVersion() {
-  log.info(`欢迎使用 ${cliName}，本地版本为：${pkg.version} 👋👋👋`)
+  logger.info(
+    `欢迎使用 ${pkg.name}，本地版本为：${pkg.version} 👋👋👋`,
+    pkg.name
+  )
 }
 
 export default core

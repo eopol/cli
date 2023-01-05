@@ -11,7 +11,7 @@ import {
  */
 export async function getNpmInfo(name: string, registry?: string) {
   if (!name) return null
-  const npmRegistry = registry ?? getDefaultRegistry()
+  const npmRegistry = registry ?? getNpmDefaultRegistry()
   const url = new URL(`${npmRegistry}/${name}`)
 
   let data: Record<string, any> | null = null
@@ -31,7 +31,7 @@ export async function getNpmInfo(name: string, registry?: string) {
  * @param isOrigin
  * @returns
  */
-function getDefaultRegistry(isOrigin = false) {
+function getNpmDefaultRegistry(isOrigin = false) {
   return isOrigin
     ? 'https://registry.npmjs.org'
     : 'https://registry.npmmirror.com'
@@ -43,7 +43,7 @@ function getDefaultRegistry(isOrigin = false) {
  * @param registry
  * @returns
  */
-export async function getNpmInfoVersions(name: string, registry?: string) {
+async function getNpmInfoVersions(name: string, registry?: string) {
   const npmInfo = await getNpmInfo(name, registry)
 
   if (npmInfo) {
@@ -59,10 +59,7 @@ export async function getNpmInfoVersions(name: string, registry?: string) {
  * @param versions
  * @returns
  */
-export function getNpmSatisfyVersion(
-  currentVersion: string,
-  versions: string[]
-) {
+function getNpmSatisfyVersion(currentVersion: string, versions: string[]) {
   // TODO: 跨主/次版本是否提示？
   // const npmSatisfyVersions = versions.filter((version) =>
   //   /*(version, `^${currentVersion}`)
@@ -76,16 +73,6 @@ export function getNpmSatisfyVersion(
   return npmSatisfyVersions
 }
 
-export async function getSatisfyVersion(
-  currentVersion: string,
-  name: string,
-  registry?: string
-) {
-  const versions = await getNpmInfoVersions(name, registry)
-  const satisfyVersions = getNpmSatisfyVersion(currentVersion, versions)
-  return satisfyVersions
-}
-
 /**
  * @description 获取最新的版本号
  * @param currentVersion
@@ -93,19 +80,17 @@ export async function getSatisfyVersion(
  * @param registry
  * @returns
  */
-export async function getLatestVersion(
+export async function getNpmLatestVersion(
   currentVersion: string,
   name: string,
   registry?: string
 ) {
-  const versions = await getSatisfyVersion(currentVersion, name, registry)
+  const versions = await getNpmInfoVersions(name, registry)
+  const npmSatisfyVersions = getNpmSatisfyVersion(currentVersion, versions)
   let latestVersion = ''
 
-  if (
-    versions.length > 0 &&
-    versionGreaterThan(latestVersion, currentVersion)
-  ) {
-    latestVersion = versions[0]
+  if (npmSatisfyVersions.length > 0) {
+    latestVersion = npmSatisfyVersions[0]
   }
 
   return latestVersion
