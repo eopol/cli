@@ -26,6 +26,8 @@ import pkg from '../package.json'
 // const readme = require('../README.md')
 
 async function core(args: string[]) {
+  logger.info(args)
+
   try {
     checkPkgVersion()
     checkNodeVersion()
