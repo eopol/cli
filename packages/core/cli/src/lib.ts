@@ -2,6 +2,8 @@ import { join, resolve } from 'node:path'
 import rootCheck from 'root-check'
 import minimist from 'minimist'
 import dotenv from 'dotenv'
+import { Command, Option } from 'commander'
+// import type {Command as CommandClass} from 'commander'
 import {
   getNpmLatestVersion,
   logger,
@@ -25,6 +27,13 @@ import pkg from '../package.json'
 // const pkg = require('../package.json')
 // const readme = require('../README.md')
 
+export interface ProgramOptions {
+  [x: string]: any
+  debug?: boolean
+}
+
+const program = new Command()
+
 async function core(args: string[]) {
   logger.info(args)
 
@@ -33,12 +42,47 @@ async function core(args: string[]) {
     checkNodeVersion()
     checkRoot()
     checkUserHome()
-    checkInputArgs()
+    // commander 中处理
+    // checkInputArgs()
     checkEnv()
     await checkCliVersion()
+    registerCommand()
+    checkDebugArg(program.opts<ProgramOptions>().debug)
   } catch (error: any) {
     logger.error(error.message, pkg.name)
   }
+}
+
+function registerCommand() {
+  const { bin, version } = pkg
+  const name = Object.keys(bin)[0]
+
+  program
+    .name(name)
+    .description(`欢迎使用 ${pkg.name}，本地版本为：${pkg.version} 👋👋👋`)
+    .usage('<command> [options]')
+    // 修改默认值
+    .version(version, '-v, --version', '查看版本号')
+    .helpOption('-h, --help', '查看使用帮助')
+
+    // .option('-d, --debug', '开启调试模式', false)
+    .addOption(new Option('-d, --debug', '开启调试模式').default(false))
+    .parse(process.argv)
+
+  // program.parse(process.argv)
+  // console.log(program.opts())
+
+  // see https://github.com/tj/commander.js/issues/1517
+  // program.on('option:debug', () => {
+  //   console.log(`program.debug: ${program.debug}`)
+  //   checkDebugArg(program.debug)
+  //   logger.debug(`${pkg.name} 本地缓存地址：${process.env.CLI_HOME}`, pkg.name)
+  // })
+
+  // see https://github.com/tj/commander.js/issues/1609
+  // program.on('command:*', (operands) => {
+  //   console.error(`error: unknown command '${operands[0]}'`)
+  // })
 }
 
 /**
@@ -108,7 +152,7 @@ function createDefaultEnv() {
  */
 function checkInputArgs() {
   const args = minimist(process.argv.slice(2))
-  checkDebugArg(args)
+  checkDebugArg(args.debug)
 }
 
 /**
@@ -116,8 +160,8 @@ function checkInputArgs() {
  * 1. 根据传入的参数来确定 log 的级别
  * @param args minimist 解析后的参数
  */
-function checkDebugArg(args: minimist.ParsedArgs) {
-  if (args.debug) {
+function checkDebugArg(debug?: boolean) {
+  if (debug) {
     process.env.LOG_LEVEL = 'Verbose'
   } else {
     process.env.LOG_LEVEL = 'Info'

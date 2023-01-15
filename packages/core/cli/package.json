@@ -52,6 +52,7 @@
     "@types/minimist": "1.2.2",
     "@types/root-check": "1.0.0",
     "@types/user-home": "2.0.0",
+    "commander": "10.0.0",
     "dayjs": "^1.11.7",
     "dotenv": "16.0.3",
     "import-local": "^3.1.0",

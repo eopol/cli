@@ -9,9 +9,7 @@
   "commit": false,
   "fixed": [],
   "linked": [],
-  "ignore": [
-    "@eo-cli-pro/docs"
-  ],
+  "ignore": ["@eo-cli-pro/docs", "@eo-cli-pro/playground"],
   "access": "public",
   "baseBranch": "master",
   "updateInternalDependencies": "patch",

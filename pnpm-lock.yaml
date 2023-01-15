@@ -191,6 +191,7 @@ importers:
       '@types/minimist': 1.2.2
       '@types/root-check': 1.0.0
       '@types/user-home': 2.0.0
+      commander: 10.0.0
       dayjs: ^1.11.7
       dotenv: 16.0.3
       import-local: ^3.1.0
@@ -204,6 +205,7 @@ importers:
       '@types/minimist': 1.2.2
       '@types/root-check': 1.0.0
       '@types/user-home': 2.0.0
+      commander: 10.0.0
       dayjs: 1.11.7
       dotenv: 16.0.3
       import-local: 3.1.0
@@ -2083,6 +2085,11 @@ packages:
     dependencies:
       delayed-stream: 1.0.0
     dev: true
+
+  /commander/10.0.0:
+    resolution: {integrity: sha512-zS5PnTI22FIRM6ylNW8G4Ap0IEOyk62fhLSD0+uHRT9McRCLGpkVNvao4bjimpK/GShynyQkFFxHhwMcETmduA==}
+    engines: {node: '>=14'}
+    dev: false
 
   /commander/4.1.1:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
