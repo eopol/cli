@@ -83,6 +83,10 @@ function registerCommand() {
   // program.on('command:*', (operands) => {
   //   console.error(`error: unknown command '${operands[0]}'`)
   // })
+
+  program.help({
+    error: true,
+  })
 }
 
 /**
