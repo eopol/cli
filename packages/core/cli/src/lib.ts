@@ -48,6 +48,7 @@ async function core(args: string[]) {
     await checkCliVersion()
     registerCommand()
     checkDebugArg(program.opts<ProgramOptions>().debug)
+    logger.debug(`${pkg.name} 本地缓存地址：${process.env.CLI_HOME}`, pkg.name)
   } catch (error: any) {
     logger.error(error.message, pkg.name)
   }
@@ -84,9 +85,9 @@ function registerCommand() {
   //   console.error(`error: unknown command '${operands[0]}'`)
   // })
 
-  program.help({
-    error: true,
-  })
+  // program.help({
+  //   error: true,
+  // })
 }
 
 /**
