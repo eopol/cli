@@ -12,6 +12,7 @@ import {
   userHome,
   versionGreaterThanOrEqual,
 } from '@eo-cli-pro/utils'
+import { commandInitActionHandler } from '@eo-cli-pro/commands'
 import {
   DEFAULT_ENV_CLI_HOME,
   LOWEST_NODE_VERSION as lowestVersion,
@@ -47,8 +48,6 @@ async function core(args: string[]) {
     checkEnv()
     await checkCliVersion()
     registerCommand()
-    checkDebugArg(program.opts<ProgramOptions>().debug)
-    logger.debug(`${pkg.name} 本地缓存地址：${process.env.CLI_HOME}`, pkg.name)
   } catch (error: any) {
     logger.error(error.message, pkg.name)
   }
@@ -65,29 +64,27 @@ function registerCommand() {
     // 修改默认值
     .version(version, '-v, --version', '查看版本号')
     .helpOption('-h, --help', '查看使用帮助')
+    .option('-d, --debug', '开启调试模式', false)
 
-    // .option('-d, --debug', '开启调试模式', false)
-    .addOption(new Option('-d, --debug', '开启调试模式').default(false))
-    .parse(process.argv)
-
-  // program.parse(process.argv)
-  // console.log(program.opts())
+  program
+    .command('init [projectName]')
+    .option('-f --force', '是否强制初始化项目') // 覆盖同名项目
+    .action(commandInitActionHandler)
 
   // see https://github.com/tj/commander.js/issues/1517
-  // program.on('option:debug', () => {
-  //   console.log(`program.debug: ${program.debug}`)
-  //   checkDebugArg(program.debug)
-  //   logger.debug(`${pkg.name} 本地缓存地址：${process.env.CLI_HOME}`, pkg.name)
-  // })
+  program.on('option:debug', () => {
+    checkDebugArg(program.opts<ProgramOptions>().debug)
+    logger.debug(`${pkg.name} 本地缓存地址：${process.env.CLI_HOME}`, pkg.name)
+  })
 
   // see https://github.com/tj/commander.js/issues/1609
   // program.on('command:*', (operands) => {
   //   console.error(`error: unknown command '${operands[0]}'`)
   // })
+  program.showHelpAfterError('(输入 --help 获取使用说明)') // 代替上面监听全局 command 捕捉错误
+  console.log(program)
 
-  // program.help({
-  //   error: true,
-  // })
+  program.parse(process.argv)
 }
 
 /**

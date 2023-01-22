@@ -18,5 +18,5 @@ export default defineConfig((options: Options) => ({
     // node description: https://nodejs.org/dist/latest-v18.x/docs/api/esm.html#no-require-exports-or-moduleexports
     js: "import { createRequire } from 'node:module';const require = createRequire(import.meta.url);",
   },
-  // minify: !options.watch,
+  minify: !options.watch,
 }))

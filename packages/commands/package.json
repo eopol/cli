@@ -1,7 +1,7 @@
 {
-  "name": "@eo-cli-pro/cli",
+  "name": "@eo-cli-pro/commands",
   "version": "0.0.0",
-  "description": "🚀 The package offer cli for @eo-cli-pro!",
+  "description": "🚀 The package offer commands for @eo-cli-pro!",
   "type": "module",
   "keywords": [
     "cli",
@@ -27,9 +27,6 @@
     },
     "./*": "./*"
   },
-  "bin": {
-    "eo-cli-pro": "./bin/index.js"
-  },
   "types": "./dist/index.d.ts",
   "sideEffects": false,
   "repository": {
@@ -47,18 +44,7 @@
     "clean:deps": "rimraf node_modules"
   },
   "dependencies": {
-    "@eo-cli-pro/commands": "workspace:*",
-    "@eo-cli-pro/utils": "workspace:*",
-    "@types/import-local": "^3.1.0",
-    "@types/minimist": "1.2.2",
-    "@types/root-check": "1.0.0",
-    "@types/user-home": "2.0.0",
-    "commander": "10.0.0",
-    "dayjs": "^1.11.7",
-    "dotenv": "16.0.3",
-    "import-local": "^3.1.0",
-    "minimist": "1.2.7",
-    "root-check": "2.0.0"
+    "commander": "10.0.0"
   },
   "devDependencies": {
     "tsup": "^6.5.0",
