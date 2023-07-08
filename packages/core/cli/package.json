@@ -53,16 +53,16 @@
     "@types/minimist": "1.2.2",
     "@types/root-check": "1.0.0",
     "@types/user-home": "2.0.0",
-    "commander": "10.0.0",
-    "dayjs": "^1.11.7",
-    "dotenv": "16.0.3",
+    "commander": "10.0.1",
+    "dayjs": "^1.11.9",
+    "dotenv": "16.3.1",
     "import-local": "^3.1.0",
-    "minimist": "1.2.7",
+    "minimist": "1.2.8",
     "root-check": "2.0.0"
   },
   "devDependencies": {
-    "tsup": "^6.5.0",
-    "typescript": "^4.9.4"
+    "tsup": "^6.7.0",
+    "typescript": "^4.9.5"
   },
   "engines": {
     "node": ">=18"

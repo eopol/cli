@@ -41,9 +41,9 @@
     "clean:deps": "rimraf node_modules"
   },
   "dependencies": {
-    "@commitlint/cli": "17.4.0",
-    "@commitlint/config-conventional": "17.4.0",
-    "czg": "^1.4.1",
+    "@commitlint/cli": "17.6.6",
+    "@commitlint/config-conventional": "17.6.6",
+    "czg": "^1.6.1",
     "@types/node": "*"
   },
   "engines": {
