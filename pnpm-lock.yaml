@@ -31,7 +31,7 @@ importers:
       npm-run-all: ^4.1.5
       octokit: ^2.0.10
       rimraf: ^3.0.2
-      semver: ^7.3.8
+      semver: ^7.5.2
       tsx: ^3.12.1
       turbo: ^1.6.3
       typescript: ^4.9.4
@@ -64,7 +64,7 @@ importers:
       npm-run-all: 4.1.5
       octokit: 2.0.10
       rimraf: 3.0.2
-      semver: 7.3.8
+      semver: 7.5.2
       tsx: 3.12.1
       turbo: 1.6.3
       typescript: 4.9.4
@@ -234,7 +234,7 @@ importers:
       '@types/semver': 7.3.13
       chalk: ^5.2.0
       consola: ^2.15.3
-      semver: ^7.3.8
+      semver: ^7.5.2
       tsup: ^6.5.0
       typescript: ^4.9.4
     dependencies:
@@ -242,7 +242,7 @@ importers:
       '@types/semver': 7.3.13
       chalk: 5.2.0
       consola: 2.15.3
-      semver: 7.3.8
+      semver: 7.5.2
     devDependencies:
       tsup: 6.5.0_typescript@4.9.4
       typescript: 4.9.4
@@ -1505,7 +1505,7 @@ packages:
       debug: 4.3.4
       globby: 11.1.0
       is-glob: 4.0.3
-      semver: 7.3.8
+      semver: 7.5.2
       tsutils: 3.21.0_typescript@4.9.4
       typescript: 4.9.4
     transitivePeerDependencies:
@@ -1526,7 +1526,7 @@ packages:
       eslint: 8.31.0
       eslint-scope: 5.1.1
       eslint-utils: 3.0.0_eslint@8.31.0
-      semver: 7.3.8
+      semver: 7.5.2
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -4460,7 +4460,7 @@ packages:
     dependencies:
       hosted-git-info: 4.1.0
       is-core-module: 2.11.0
-      semver: 7.3.8
+      semver: 7.5.2
       validate-npm-package-license: 3.0.4
 
   /normalize-path/3.0.0:
@@ -5142,6 +5142,14 @@ packages:
 
   /semver/7.3.8:
     resolution: {integrity: sha512-NB1ctGL5rlHrPJtFDVIVzTyQylMLu9N9VICA6HSFJo8MCGVTMW6gfpicwKmmK/dAjTOrqu5l63JJOpDSrAis3A==}
+    engines: {node: '>=10'}
+    hasBin: true
+    dependencies:
+      lru-cache: 6.0.0
+    dev: false
+
+  /semver/7.5.2:
+    resolution: {integrity: sha512-SoftuTROv/cRjCze/scjGyiDtcUyxw1rgYQSZY7XTmtR5hX+dm76iDbTH8TkLPHCQmlbQVSSbNZCPM2hb0knnQ==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -6190,7 +6198,7 @@ packages:
       espree: 9.4.1
       esquery: 1.4.0
       lodash: 4.17.21
-      semver: 7.3.8
+      semver: 7.5.2
     transitivePeerDependencies:
       - supports-color
     dev: false
